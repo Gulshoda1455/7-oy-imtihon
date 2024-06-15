@@ -62,8 +62,20 @@ export async function deleteProduct(productId){
 
 export async function createCategory(data){
     try{
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Foydalanuvchi tokeni topilmadi, iltimos qayta kiriting.");
+            return;
+        }
+
+        const headers = {
+            "Content-Type": "application/json",
+            Authorization: token,
+        };
         
-    const response=await axios.post(`${url}/api/categories`, data);
+    const response=await axios.post(`${url}/api/categories`, data, {
+        headers: headers,
+    });
     return response;
     }catch(err){
         console.log(err);
@@ -89,8 +101,20 @@ export async function editCategory(data,categoryId){
 }
 
 export async function deleteCategory(categoryId){
-    try{  
-    const response=await axios.delete(`${url}/api/categories/${categoryId}`);
+    try{ 
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Foydalanuvchi tokeni topilmadi, iltimos qayta kiriting.");
+            return;
+        }
+
+        const headers = {
+            "Content-Type": "application/json",
+            Authorization: token,
+        }; 
+    const response=await axios.delete(`${url}/api/categories/${categoryId}`,{
+        headers: headers,
+    });
    return response
     
     }catch(err){
