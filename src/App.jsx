@@ -5,6 +5,7 @@ import Products from './assets/pages/Products'
 import GeneralLayout from './assets/pages/GeneralLayout'
 import './App.css';
 import Login from './assets/pages/Auth/Login'
+import Register from './assets/pages/Auth/Register'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
              <Route path='/products' element={<Products/>}/>
           </Route>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
          </Routes>
     </BrowserRouter>
     </>
